@@ -52,7 +52,7 @@ function! s:vim_completes_me(shift_tab)
     return "\<C-x>\<C-f>"
   elseif period && (&omnifunc != '')
     if get(b:, 'tab_complete_pos', []) == pos
-      let exp = "\<C-x>" . dirs[!dir]
+      let exp = "\<C-x>" . dirs[dir]
     else
       let exp = "\<C-x>\<C-o>"
     endif
@@ -63,7 +63,7 @@ function! s:vim_completes_me(shift_tab)
   " First fallback to keyword completion if special completion was already tried.
   if exists('b:completion_tried') && b:completion_tried
     let b:completion_tried = 0
-    return "\<C-e>" . dirs[!dir]
+    return "\<C-e>" . dirs[dir]
   endif
 
   " Fallback
@@ -79,7 +79,7 @@ function! s:vim_completes_me(shift_tab)
   elseif map ==? "vim"
     return "\<C-x>\<C-v>"
   else
-    return "\<C-x>" . dirs[!dir]
+    return "\<C-x>" . dirs[dir]
   endif
 endfunction
 
