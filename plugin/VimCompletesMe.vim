@@ -102,7 +102,11 @@ inoremap <expr> <plug>omnicompletion <sid>omnicompletion()
 if g:vcm_default_maps
   imap <Tab>   <plug>vim_completes_me_forward
   imap <S-Tab> <plug>vim_completes_me_backward
-  imap <nul>   <plug>omnicompletion
+  if has('win32') || has('win64')
+      imap <C-space> <plug>omnicompletion
+  else
+      imap <nul> <plug>omnicompletion
+  endif
 endif
 
 " Autocmds {{{1
