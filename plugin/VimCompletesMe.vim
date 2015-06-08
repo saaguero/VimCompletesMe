@@ -84,6 +84,10 @@ function! s:vim_completes_me(shift_tab)
 endfunction
 
 function! s:omnicompletion()
+    if pumvisible()
+      return ''
+    endif
+
     if &omnifunc != ''
         return "\<C-x>\<C-o>"
     elseif &completefunc != ''
@@ -117,3 +121,4 @@ augroup VCM
     autocmd CompleteDone * let b:completion_tried = 0
   endif
 augroup END
+
